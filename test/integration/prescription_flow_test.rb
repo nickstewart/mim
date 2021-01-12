@@ -15,6 +15,6 @@ class PrescriptionFlowTest < ActionDispatch::IntegrationTest
     assert_response :redirect
     follow_redirect!
     assert_response :success
-    assert_select "p", "Name: can create prescription"
+    assert_select "h1", "can create prescription"
   end
 end
