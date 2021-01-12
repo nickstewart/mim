@@ -1,0 +1,14 @@
+<%= form_with model: prescription do |f| %>
+  <div>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+    <%= prescription.errors.full_messages_for(:name).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= f.submit %>
+  </div>
+<% end %>
+
