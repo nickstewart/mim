@@ -11,7 +11,8 @@
   </head>
 
   <body>
-    <%= flash[:notice] %>
+    <%= render 'layout/flash' %>
+
     <%= yield %>
   </body>
 </html>
