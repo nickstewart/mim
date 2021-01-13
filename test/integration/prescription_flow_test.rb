@@ -6,7 +6,7 @@ class PrescriptionFlowTest < ActionDispatch::IntegrationTest
     assert_select "h1", "Prescriptions"
   end
 
-  test "can create an prescription" do
+  test "can create a prescription" do
     get "/prescriptions/new"
     assert_response :success
 
@@ -16,5 +16,19 @@ class PrescriptionFlowTest < ActionDispatch::IntegrationTest
     follow_redirect!
     assert_response :success
     assert_select "h1", "can create prescription"
+  end
+
+  test "can delete a prescription" do
+    p = prescriptions(:one)
+    get "/prescriptions/#{p.id}"
+    assert_response :success
+    assert_select "h1", p.name
+
+    delete "/prescriptions/#{p.id}",
+      params: { prescription: { id: p.id } } 
+    assert_response :redirect
+    follow_redirect!
+    assert_response :success
+    assert_select "h1", "Prescriptions"
   end
 end
