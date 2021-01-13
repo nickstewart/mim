@@ -22,6 +22,13 @@ class PrescriptionsController < ApplicationController
     end
   end
 
+  def destroy
+    @prescription = Prescription.find(params[:id])
+    @prescription.destroy
+    redirect_to prescriptions_path
+    flash[:notice] = "Prescription deleted."
+  end
+
   private
 
   def prescription_params
