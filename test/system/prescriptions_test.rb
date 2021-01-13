@@ -7,10 +7,6 @@ class PrescriptionsTest < ApplicationSystemTestCase
     assert_selector "h1", text: "Prescriptions"
   end
   
-  test "that all prescriptions are listed on the index page" do
-  
-  end
-
   test "creating a prescription" do
     visit prescriptions_path
 
@@ -21,5 +17,16 @@ class PrescriptionsTest < ApplicationSystemTestCase
     click_on "Create Prescription"
 
     assert_text "Prescription successfully created!"
+  end
+
+  test "deleting a prescription" do
+    prescription = prescriptions(:one)
+    visit prescription_path(prescription)
+    
+    accept_confirm do
+      click_on "Delete"
+    end
+
+    assert_text "Prescription deleted."
   end
 end

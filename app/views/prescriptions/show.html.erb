@@ -1,2 +1,2 @@
 <h1><%= @prescription.name %></h1>
-
+<%= link_to 'Delete', prescription_path(@prescription), method: :delete, data: { confirm: 'Are you sure?' } %>
