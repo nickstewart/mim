@@ -6,6 +6,10 @@ class PrescriptionsController < ApplicationController
   def show
     @prescription = Prescription.find(params[:id])
   end
+  
+  def edit
+    @prescription = Prescription.find(params[:id])
+  end
 
   def new
     @prescription = Prescription.new
@@ -16,9 +20,20 @@ class PrescriptionsController < ApplicationController
     
     if @prescription.save
       redirect_to @prescription
-      flash[:notice] = "Prescription successfully created!"
+      flash[:notice] = "Prescription created."
     else
       render :new
+    end
+  end
+
+  def update
+    @prescription = Prescription.find(params[:id])
+    
+    if @prescription.update(prescription_params)
+      redirect_to @prescription
+      flash[:notice] = "Your changes have been saved."
+    else
+      render :edit
     end
   end
 

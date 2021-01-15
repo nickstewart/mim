@@ -12,11 +12,26 @@ class PrescriptionsTest < ApplicationSystemTestCase
 
     click_on "New Prescription"
 
-    fill_in "Name", with: "Creating an Prescritpion"
+    fill_in "Name", with: "Creating a prescription"
 
     click_on "Create Prescription"
 
-    assert_text "Prescription successfully created!"
+    assert_text "Prescription created."
+  end
+
+  test "editing a prescription" do
+    prescription = prescriptions(:one)
+    visit prescription_path(prescription)
+
+    click_on "Edit"
+
+    assert_text "Editing #{prescription.name}"
+
+    fill_in "Name", with: "Editing a prescription"
+
+    click_on "Update Prescription"
+
+    assert_text "Your changes have been saved."
   end
 
   test "deleting a prescription" do

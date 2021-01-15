@@ -1,8 +1,17 @@
 require "test_helper"
 
 class PrescriptionsControllerTest < ActionDispatch::IntegrationTest
+  setup do
+    @prescription = prescriptions(:one)
+  end
+
+  teardown do
+    Rails.cache.clear
+  end
+
   test "that it has routes for prescriptions" do
     assert_routing '/prescriptions', controller: 'prescriptions', action: 'index'
+    assert_routing '/prescriptions/new', controller: 'prescriptions', action: 'new'
   end
 
   # Functional Tests
@@ -17,22 +26,30 @@ class PrescriptionsControllerTest < ActionDispatch::IntegrationTest
       post prescriptions_url, params: { prescription: { name: "Rails is awesome!" } }
     end
     assert_redirected_to prescription_path(Prescription.last)
-    assert_equal "Prescription successfully created!", flash[:notice]
+    assert_equal "Prescription created.", flash[:notice]
   end
 
   test "should show prescription" do
-    prescription = prescriptions(:one)
-    get prescription_url(prescription)
+    get prescription_url(@prescription)
     assert_response :success
   end
 
+  test "should update prescription" do
+    patch prescription_url(@prescription), params: { prescription: { name: "updated" } }
+
+    assert_redirected_to prescription_path(@prescription)
+    # Reload association to fetch updated data and assert that title is updated.
+    @prescription.reload
+    assert_equal "updated", @prescription.name
+  end
+
   test "should destroy prescription" do
-    prescription = prescriptions(:one)
     assert_difference("Prescription.count", -1) do
-      delete prescription_url(prescription)
+      delete prescription_url(@prescription)
     end
 
     assert_redirected_to prescriptions_path
   end
+
 end
 
