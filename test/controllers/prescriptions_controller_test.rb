@@ -23,7 +23,7 @@ class PrescriptionsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create prescription" do
     assert_difference("Prescription.count") do
-      post prescriptions_url, params: { prescription: { name: "Rails is awesome!" } }
+      post prescriptions_url, params: {prescription:{name: "Rails is awesome!"}}
     end
     assert_redirected_to prescription_path(Prescription.last)
     assert_equal "Prescription created.", flash[:notice]
@@ -35,7 +35,7 @@ class PrescriptionsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update prescription" do
-    patch prescription_url(@prescription), params: { prescription: { name: "updated" } }
+    patch prescription_url(@prescription), params: {prescription:{name: "updated"}}
 
     assert_redirected_to prescription_path(@prescription)
     # Reload association to fetch updated data and assert that title is updated.

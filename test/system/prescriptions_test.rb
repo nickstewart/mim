@@ -1,6 +1,14 @@
 require "application_system_test_case"
 
 class PrescriptionsTest < ApplicationSystemTestCase
+  setup do
+    prescription = prescriptions(:one)
+    visit prescription_path(prescription)
+  end
+  
+  teardown do
+    Rails.cache.clear
+  end
   test "visiting the index" do
     visit prescriptions_url
   

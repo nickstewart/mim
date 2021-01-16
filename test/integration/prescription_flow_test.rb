@@ -1,6 +1,14 @@
 require "test_helper"
 
 class PrescriptionFlowTest < ActionDispatch::IntegrationTest
+  setup do
+    @script = prescriptions(:one)
+  end
+
+  teardown do
+    Rails.cache.clear
+  end
+
   test "can see the Prescriptions page" do
     get "/prescriptions"
     assert_select "h1", "Prescriptions"
@@ -11,33 +19,31 @@ class PrescriptionFlowTest < ActionDispatch::IntegrationTest
     assert_response :success
 
     post "/prescriptions",
-      params: { prescription: { name: "can create prescription" } }
+      params: {prescription:{name: "can create prescription"}}
     assert_response :redirect
     follow_redirect!
     assert_response :success
     assert_select "h1", "can create prescription"
   end
 
-  test "can edit a prescription" do
-    p = prescriptions(:one)
-    get "/prescriptions/#{p.id}/edit"
+  test "can edit prescription" do
+    get "/prescriptions/#{@script.id}/edit"
     assert_response :success
 
-    patch "/prescriptions/#{p.id}",
+    patch "/prescriptions/#{@script.id}",
       params: {prescription:{name: "updated"}}
     assert_response :redirect
     follow_redirect!
-    assert_equal "/prescriptions/#{p.id}", path
+    assert_equal "/prescriptions/#{@script.id}", path
     assert_equal "Your changes have been saved.", flash[:notice] 
   end
 
-  test "can delete a prescription" do
-    p = prescriptions(:one)
-    get "/prescriptions/#{p.id}"
+  test "can delete prescription" do
+    get "/prescriptions/#{@script.id}"
     assert_response :success
-    assert_select "h1", p.name
+    assert_select "h1", @script.name
 
-    delete "/prescriptions/#{p.id}"
+    delete "/prescriptions/#{@script.id}"
     assert_response :redirect
     follow_redirect!
     assert_response :success
