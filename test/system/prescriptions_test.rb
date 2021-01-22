@@ -9,6 +9,7 @@ class PrescriptionsTest < ApplicationSystemTestCase
   teardown do
     Rails.cache.clear
   end
+
   test "visiting the index" do
     visit prescriptions_url
   
@@ -24,7 +25,7 @@ class PrescriptionsTest < ApplicationSystemTestCase
 
     click_on "Create Prescription"
 
-    assert_text "Prescription created."
+    assert_text "Prescription created"
   end
 
   test "editing a prescription" do
@@ -39,7 +40,7 @@ class PrescriptionsTest < ApplicationSystemTestCase
 
     click_on "Update Prescription"
 
-    assert_text "Your changes have been saved."
+    assert_text "Your changes have been saved"
   end
 
   test "deleting a prescription" do
@@ -50,6 +51,6 @@ class PrescriptionsTest < ApplicationSystemTestCase
       click_on "Delete"
     end
 
-    assert_text "Prescription deleted."
+    assert_text "Prescription deleted"
   end
 end

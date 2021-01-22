@@ -26,7 +26,7 @@ class PrescriptionsControllerTest < ActionDispatch::IntegrationTest
       post prescriptions_url, params: {prescription:{name: "Rails is awesome!"}}
     end
     assert_redirected_to prescription_path(Prescription.last)
-    assert_equal "Prescription created.", flash[:notice]
+    assert_equal "Prescription created", flash[:notice]
   end
 
   test "should show prescription" do

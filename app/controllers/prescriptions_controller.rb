@@ -1,4 +1,5 @@
 class PrescriptionsController < ApplicationController
+
   def index
     @prescriptions = Prescription.all
   end
@@ -17,10 +18,8 @@ class PrescriptionsController < ApplicationController
 
   def create
     @prescription = Prescription.new(prescription_params)
-    
     if @prescription.save
-      redirect_to @prescription
-      flash[:notice] = "Prescription created."
+      redirect_to @prescription, notice: "Prescription created"
     else
       render :new
     end
@@ -28,10 +27,8 @@ class PrescriptionsController < ApplicationController
 
   def update
     @prescription = Prescription.find(params[:id])
-    
     if @prescription.update(prescription_params)
-      redirect_to @prescription
-      flash[:notice] = "Your changes have been saved."
+      redirect_to @prescription, notice: "Your changes have been saved"
     else
       render :edit
     end
@@ -40,8 +37,7 @@ class PrescriptionsController < ApplicationController
   def destroy
     @prescription = Prescription.find(params[:id])
     @prescription.destroy
-    redirect_to prescriptions_path
-    flash[:notice] = "Prescription deleted."
+    redirect_to prescriptions_path, alert: "Prescription deleted"
   end
 
   private
@@ -50,3 +46,4 @@ class PrescriptionsController < ApplicationController
     params.require(:prescription).permit(:name)
   end
 end
+
