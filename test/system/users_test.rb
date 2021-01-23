@@ -38,7 +38,7 @@ class UsersTest < ApplicationSystemTestCase
     user = users(:one)
     visit user_path(user)
 
-    click_on "Edit"
+    click_on "Edit Account"
 
     assert_text "Editing #{user.name}"
 
@@ -57,7 +57,7 @@ class UsersTest < ApplicationSystemTestCase
       click_on "Delete"
     end
 
-    assert_text "User deleted"
+    assert_text "Account deleted"
   end
 end
 
