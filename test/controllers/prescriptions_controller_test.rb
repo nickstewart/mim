@@ -10,7 +10,7 @@ class PrescriptionsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "that it has routes for prescriptions" do
-    assert_routing '/prescriptions', controller: 'prescriptions', action: 'index'
+    assert_routing '/', controller: 'prescriptions', action: 'index'
     assert_routing '/prescriptions/new', controller: 'prescriptions', action: 'new'
   end
 

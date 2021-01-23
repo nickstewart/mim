@@ -28,7 +28,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      redirect_to user_path(@user), notice: "Account updated"
+      redirect_to user_path(@user), notice: "Your changes have been saved"
     else
       render :edit
     end

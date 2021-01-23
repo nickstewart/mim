@@ -35,7 +35,7 @@ class PrescriptionFlowTest < ActionDispatch::IntegrationTest
     assert_response :redirect
     follow_redirect!
     assert_equal "/prescriptions/#{@script.id}", path
-    assert_equal "Your changes have been saved.", flash[:notice] 
+    assert_equal "Your changes have been saved", flash[:notice] 
   end
 
   test "can delete prescription" do
