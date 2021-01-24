@@ -4,6 +4,8 @@
 
 A simple inventory program for managing repeat prescriptions. Add a new prescription to MIM's database and make it active, it should appear in the user's inventory.
 
+Current development focus is on the test suite.
+
 ## Environment 
 
 * macOS 11.1
