@@ -1,6 +1,8 @@
 # MIM
 
-## Medicine Inventory Manager (MIM)
+### Medicine Inventory Manager (MIM)
+
+An app to manage repeat prescriptions
 
 ## MIM's Development Environment
 
