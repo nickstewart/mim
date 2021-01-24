@@ -2,14 +2,13 @@
 
 ### Medicine Inventory Manager (MIM)
 
-A simple inventory program for managing repeat prescriptions.
+A simple inventory program for managing repeat prescriptions. Add a new prescription to MIM's database and make it active, it should appear in the user's inventory.
 
-## MIM's Development Environment
+## Environment 
 
 * macOS 11.1
 * ruby 3.0.0p0 (2020-12-25 revision 95aff21468) [x86_64-darwin20]
 * Rails 6.1.1
-* Node v14.15.4
 
 ## Setup
 
