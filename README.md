@@ -2,7 +2,7 @@
 
 ### Medicine Inventory Manager (MIM)
 
-An app to manage repeat prescriptions
+A simple inventory program for managing repeat prescriptions.
 
 ## MIM's Development Environment
 
