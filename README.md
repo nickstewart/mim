@@ -1,4 +1,4 @@
-# MIM
+# MIM-API
 
 ### Medicine Inventory Manager (MIM)
 
